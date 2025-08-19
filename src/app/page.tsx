@@ -84,7 +84,7 @@ export default async function Home({
         </div>
       )}
       {hasSection ? (
-        <div className="grid gap-8 xl:grid-cols-[2.2fr_1fr]">
+        <div className="grid gap-8 md:grid-cols-[2fr_1fr] xl:grid-cols-[2.2fr_1fr]">
           <main>
             <h2 className="sr-only">최신기사</h2>
             <div className="h-[2px] bg-[var(--primary)]/70 my-2" />
@@ -102,7 +102,7 @@ export default async function Home({
             </div>
             <Pagination total={total} limit={limit} totalPages={totalPages} />
           </main>
-          <aside className="space-y-6">
+          <aside className="space-y-6 hidden md:block">
             <AdSlot height={250} />
             <SidebarMostViewed
               title={`${SECTION_LABEL_KO[sp!.section!]} 많이 본 기사`}

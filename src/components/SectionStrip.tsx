@@ -15,13 +15,13 @@ export function SubsectionChips({
 
   return (
     <div>
-      <div className="flex items-baseline gap-8">
-        <h2 className="text-4xl font-extrabold tracking-tight text-[var(--primary)]">
+      <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:gap-8">
+        <h2 className="text-4xl font-extrabold tracking-tight text-[var(--primary)] whitespace-nowrap flex-shrink-0">
           <Link href={`/?section=${section}`} className="hover:text-black">
             {SECTION_LABEL_KO[section]}
           </Link>
         </h2>
-        <ul className="flex flex-wrap gap-x-7 gap-y-3 text-gray-700 text-lg">
+        <ul className="flex flex-wrap gap-x-4 gap-y-2 text-gray-700 text-base md:text-lg md:flex-1 min-w-0">
           {items.map((sub) => {
             const isActive = active === sub;
             return (

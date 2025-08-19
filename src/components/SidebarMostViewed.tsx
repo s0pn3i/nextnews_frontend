@@ -10,7 +10,7 @@ export default function SidebarMostViewed({
 }) {
   if (!items?.length) return null;
   return (
-    <aside className="card p-0 overflow-hidden">
+    <aside className="hidden sm:block card p-0 overflow-hidden">
       <div className="px-4 py-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold">
         {title}
       </div>

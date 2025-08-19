@@ -19,7 +19,7 @@ const SECTION_ORDER: Section[] = [
 export default function SiteMap() {
   return (
     <div className="bg-gray-50 border-t mt-12">
-      <div className="max-w-6xl mx-auto px-4 py-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="max-w-7xl mx-auto px-4 py-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {SECTION_ORDER.map((section) => (
           <div key={section}>
             <h4 className="font-bold mb-3">

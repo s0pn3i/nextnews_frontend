@@ -5,6 +5,7 @@ import { SECTION_LABEL_KO, SUBSECTION_LABEL_KO } from "@/lib/labels";
 import Container from "@/components/Container";
 import SidebarMostViewed from "@/components/SidebarMostViewed";
 import ArticleMetaBar from "@/components/ArticleMetaBar";
+import AdSlot from "@/components/AdSlot";
 
 export default async function ArticleDetail({
   params,
@@ -34,12 +35,30 @@ export default async function ArticleDetail({
               </h1>
               <ArticleMetaBar createdAt={article.createdAt} />
 
-              <div className="article-body prose max-w-none whitespace-pre-wrap leading-8 text-gray-900 bg-white rounded-md p-6">
-                {article.content}
+              <div className="article-body prose max-w-none leading-8 text-gray-900 bg-white rounded-md p-6">
+                {(() => {
+                  const paragraphs = (article.content || "")
+                    .split(/\n{2,}/g)
+                    .map((t) => t.trim())
+                    .filter(Boolean);
+                  return paragraphs.map((para, idx) => (
+                    <div key={`para-${idx}`}>
+                      <p className="korean-keep">{para}</p>
+                      {(idx === 0 || idx === paragraphs.length - 1) ? (
+                        <div className="my-6 not-prose">
+                          <AdSlot layout="in-article" />
+                        </div>
+                      ) : null}
+                    </div>
+                  ));
+                })()}
               </div>
             </article>
-            <aside className="space-y-6">
+            <aside className="space-y-6 hidden md:block">
+              <AdSlot height={250} />
               <SidebarMostViewed items={mostViewed.items.slice(0, 5)} />
+              <AdSlot height={250} />
+              <AdSlot height={600} className="hidden lg:block" />
             </aside>
           </div>
         </Container>
